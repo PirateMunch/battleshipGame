@@ -2,125 +2,40 @@ const ship = require('./ship');
 
 const gameboard = () => {
     let missedAttacks = [];
-    let board = [
-        [0],
-        [1],
-        [2],
-        [3],
-        [4],
-        [5],
-        [6],
-        [7],
-        [8],
-        [9],
-        [10],
-        [11],
-        [12],
-        [13],
-        [14],
-        [15],
-        [16],
-        [17],
-        [18],
-        [19],
-        [20],
-        [21],
-        [22],
-        [23],
-        [24],
-        [25],
-        [26],
-        [27],
-        [28],
-        [29],
-        [30],
-        [31],
-        [32],
-        [33],
-        [34],
-        [35],
-        [36],
-        [37],
-        [38],
-        [39],
-        [40],
-        [41],
-        [42],
-        [43],
-        [44],
-        [45],
-        [46],
-        [47],
-        [48],
-        [49],
-        [50],
-        [51],
-        [52],
-        [53],
-        [54],
-        [55],
-        [56],
-        [57],
-        [58],
-        [59],
-        [60],
-        [61],
-        [62],
-        [63],
-        [64],
-        [65],
-        [66],
-        [67],
-        [68],
-        [69],
-        [70],
-        [71],
-        [72],
-        [73],
-        [74],
-        [75],
-        [76],
-        [77],
-        [78],
-        [79],
-        [80],
-        [81],
-        [82],
-        [83],
-        [84],
-        [85],
-        [86],
-        [87],
-        [88],
-        [89],
-        [90],
-        [91],
-        [92],
-        [93],
-        [94],
-        [95],
-        [96],
-        [97],
-        [98],
-        [99],
-    ];
 
-    let cruiser = ship(5);
+    const newBoard = () => {
+        return [
+            [0,1,2,3,4,5,6,7,8,9],
+            [0,1,2,3,4,5,6,7,8,9],
+            [0,1,2,3,4,5,6,7,8,9],
+            [0,1,2,3,4,5,6,7,8,9],
+            [0,1,2,3,4,5,6,7,8,9],
+            [0,1,2,3,4,5,6,7,8,9],
+            [0,1,2,3,4,5,6,7,8,9],
+            [0,1,2,3,4,5,6,7,8,9],
+            [0,1,2,3,4,5,6,7,8,9],
+            [0,1,2,3,4,5,6,7,8,9],
+        ]
+    };
 
-    const placeShip = (x) => {
-        cruiser.location = x;
-        board[[x]] = ['cruiser'];
+    let board = newBoard ();   
+
+    const placeShip = (posistion1, posistion2, cruiser) => {
+        cruiser = ship(2)
+        cruiser.location = [posistion1][posistion2];
+        board[posistion1][posistion2] = 'cruiser';
         return board;
     };
-    const receiveAttack = (y) => {
-        if(board[[y]] == ['cruiser']) {
-            board[[y]] = ['hit'];
-            cruiser.hit();
+
+    const receiveAttack = (posistion1, posistion2) => {
+        if(board[posistion1][posistion2] === 'cruiser') {
+            board[posistion1][posistion2] = 'hit';
         } else {
-            board[[y]] = ['miss']
+            board[posistion1][posistion2] = 'miss'
         }
         return board;
     };
+
     const allShipSunk = () => {
         return true;
     };
