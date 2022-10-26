@@ -18,18 +18,30 @@ const gameboard = () => {
         ]
     };
 
-    let board = newBoard ();   
+    const newPlayerShips = () => {
+        const cruiser = ship(2);
+        const sloop = ship(1);
+        return {cruiser, sloop}
+    }
 
-    const placeShip = (posistion1, posistion2, cruiser) => {
-        cruiser = ship(2)
-        cruiser.location = [posistion1][posistion2];
-        board[posistion1][posistion2] = 'cruiser';
+    let board = newBoard ();   
+    let playerShips = newPlayerShips();
+
+    const placeToBoard = (posistion1, posistion2) => {
+        if(posistion2 > 0) {
+            playerShips.cruiser.placeShip(posistion1, posistion2);
+            board[posistion1][posistion2] = 'cruiser';
+        } else {
+            playerShips.sloop.placeShip(posistion1, posistion2);
+            board[posistion1][posistion2] = 'sloop';
+        }
         return board;
     };
 
     const receiveAttack = (posistion1, posistion2) => {
         if(board[posistion1][posistion2] === 'cruiser') {
             board[posistion1][posistion2] = 'hit';
+            playerShips.cruiser.hit();
         } else {
             board[posistion1][posistion2] = 'miss'
         }
@@ -37,10 +49,12 @@ const gameboard = () => {
     };
 
     const allShipSunk = () => {
+        if(playerShips.sloop.isSunk() && playerShips.cruiser.isSunk() === true) 
         return true;
+        
     };
 
-    return { missedAttacks, placeShip, receiveAttack, allShipSunk };
+    return { missedAttacks, playerShips, newBoard, newPlayerShips, placeToBoard, receiveAttack, allShipSunk };
 };
 
 module.exports = gameboard;
