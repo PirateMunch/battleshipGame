@@ -1,11 +1,21 @@
 const ship = require('./ship');
+const board = require('./gameboard');
 
-const player = () => {
-    const cruiser = ship(3);
-    const sloop = ship(2);
-    const scout = ship(1);
-    const name = 'neal';
-    return {cruiser, sloop, scout, name}
-};
+function player() {
+    let boats = 5;
+    let name = 'neal';
+    let enemyBoard = board;
 
-module.exports = player
+    function newGame() {
+        enemyBoard = board;
+        return enemyBoard;
+    }
+
+    function attack(posistion1, posistion2) {
+        return enemyBoard().receiveAttack(posistion1, posistion2);
+    }
+
+    return { name, boats, newGame, attack, enemyBoard };
+}
+
+module.exports = player;
