@@ -1,10 +1,9 @@
-const ship = require('./ship');
+import { ship } from './ship.js'
 
-const gameboard = () => {
+export function board () {
     let missedAttacks = [];
 
-    const newBoard = () => {
-        return [
+    let board = [
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -16,7 +15,7 @@ const gameboard = () => {
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
             [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
         ];
-    };
+    
 
     function newPlayerShips() {
         const cruiser = ship(2);
@@ -24,7 +23,6 @@ const gameboard = () => {
         return { cruiser, sloop };
     }
 
-    let board = newBoard();
     let playerShips = newPlayerShips();
 
     const placeToBoard = (posistion1, posistion2) => {
@@ -54,8 +52,7 @@ const gameboard = () => {
 
     return {
         missedAttacks,
-        playerShips,
-        newBoard,
+        board,
         newPlayerShips,
         placeToBoard,
         receiveAttack,
@@ -63,4 +60,6 @@ const gameboard = () => {
     };
 };
 
-module.exports = gameboard;
+// testing scripts below
+// const ship = require('./ship');
+// module.exports = board;

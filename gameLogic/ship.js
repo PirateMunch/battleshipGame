@@ -1,4 +1,4 @@
-function ship(length) {
+export function ship(length) {
     let hits = 0;
     let location;
 
@@ -17,4 +17,6 @@ function ship(length) {
     return { length, hits, location, hit, isSunk, placeShip };
 }
 
-module.exports = ship;
+// script for testing below.
+
+// module.exports = ship;

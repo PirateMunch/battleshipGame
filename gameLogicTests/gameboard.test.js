@@ -1,6 +1,6 @@
-const gameboard = require('../gameLogic/gameboard');
+const gameboard = require('../gameLogic/board');
 
-const mockGame = gameboard();
+const mockGame = board();
 
 test('missed attacks', () => {
     expect(mockGame.missedAttacks).toEqual(expect.arrayContaining([]));

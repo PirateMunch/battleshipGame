@@ -1,7 +1,6 @@
-const ship = require('./ship');
-const board = require('./gameboard');
+import { board } from './gameboard.js'
 
-function player() {
+export function player() {
     let boats = 5;
     let name = 'neal';
     let enemyBoard = board;
@@ -18,4 +17,8 @@ function player() {
     return { name, boats, newGame, attack, enemyBoard };
 }
 
-module.exports = player;
+// Testing scripts below
+
+// const ship = require('./ship');
+// const board = require('./gameboard');
+// module.exports = player;
