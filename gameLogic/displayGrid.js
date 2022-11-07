@@ -17,7 +17,7 @@ export function newGrid(numberCells) {
             classAttribute.value = 'gamecell';
             newDiv.setAttributeNode(classAttribute);
             //Give each cell a number to its data-set
-            const classAttribute2 = document.createAttribute("data-set");
+            const classAttribute2 = document.createAttribute("id");
             classAttribute2.value = `${label}`;
             newDiv.setAttributeNode(classAttribute2);
             // Create a style attribute for cell width, then assign value

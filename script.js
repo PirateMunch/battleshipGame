@@ -1,12 +1,12 @@
 import { player } from './gameLogic/player.js'
 import { newGrid } from './gameLogic/displayGrid.js'
-import { startupScreen } from './gameLogic/startupScreen.js';
+import { startupScreenP1 } from './gameLogic/startupScreenP1.js';
 
 
 startGame.addEventListener('click', (e) => {
    const startGame = document.getElementById('startGame'); 
     setGame()
-    startupScreen()
+    startupScreenP1()
 });
 
 function setGame () {
